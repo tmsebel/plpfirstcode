@@ -1,7 +1,7 @@
 # Fun Calculator!
 # We're going to add, subtract, multiply, and divide two numbers like a boss!
 # Step 1 : Ask the user to input the first number
-#We're using 'float()' to make sure our numbers can have decimals too. Fancr, right ?
+#We're using 'float()' to make sure our numbers can have decimals too. Fancy, right ?
 num1 = float(input("Enter the first number:"))
 
 # Step 2: Ask the user to input the second number
