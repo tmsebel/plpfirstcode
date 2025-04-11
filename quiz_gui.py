@@ -1,37 +1,38 @@
+import random
+
 def ask_question(question, options, correct_option):
     print(question)
     for i, option in enumerate(options, 1):
         print(f"{i}. {option}")
-    answer = input("Choose the correct option (1/2/3/4): ")
-    return int(answer) == correct_option
+    try:
+        answer = int(input("Choose the correct option (1/2/3/4): "))
+        if answer < 1 or answer > 4:
+            raise ValueError
+        if answer == correct_option:
+            return True
+        else:
+            print(f"Wrong! The correct answer is: {options[correct_option - 1]}\n")
+            return False
+    except ValueError:
+        print("Invalid input! Please enter a number between 1 and 4.")
+        return False
 
 def quiz():
     questions = [
+        # Your full question list here
         {
             "question": "What is the capital of France?",
             "options": ["Berlin", "Madrid", "Paris", "Lisbon"],
             "correct_option": 3
         },
-        {
-            "question": "Who directed the movie 'Inception'?",
-            "options": ["Steven Spielberg", "Christopher Nolan", "James Cameron", "Quentin Tarantino"],
-            "correct_option": 2
-        },
-        {
-            "question": "Which programming language is known as the language of the web?",
-            "options": ["Python", "Java", "C++", "JavaScript"],
-            "correct_option": 4
-        }
+        # Add the rest
     ]
-
+    random.shuffle(questions)
     score = 0
     for q in questions:
         if ask_question(q["question"], q["options"], q["correct_option"]):
             score += 1
             print("Correct!\n")
-        else:
-            print("Wrong!\n")
-
     print(f"Your final score is {score} out of {len(questions)}")
 
 def main():
